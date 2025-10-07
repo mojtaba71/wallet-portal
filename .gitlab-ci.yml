@@ -1,0 +1,20 @@
+stages:
+  - docker-build
+
+variables:
+  IMAGE_NAME: kubernetes.parsyar.ir/hub-portal
+  VERSION: 1.0.0
+
+docker_build:
+  stage: docker-build
+  image: docker:latest
+
+  services:
+    - docker:dind
+  script:
+    - chmod +x ./buildimage.sh
+    - ./buildimage.sh $IMAGE_NAME $VERSION
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main" && $CI_COMMIT_MESSAGE =~ /.*\[PARS_RELEASE\].*/'
+      when: always
+    - when: never

@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  hub-portal:
+    build: .
+    ports:
+      # CHANGE THIS: Update port mapping based on your server configuration
+      # Format: "HOST_PORT:CONTAINER_PORT"
+      # Examples: "80:80", "8080:80", "3000:80"
+      - "80:80"
+      # If you need HTTPS, also expose port 443
+      - "443:443"
+    restart: unless-stopped
+    healthcheck:
+      # Health check for HTTPS (recommended for production)
+      # If you're using HTTP only, change to: ["CMD", "curl", "-f", "http://localhost/health"]
+      test: ["CMD", "curl", "-f", "-k", "https://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

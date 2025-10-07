@@ -1,0 +1,141 @@
+.ant-picker {
+  width: 100%;
+}
+
+/* Tailwind CSS utilities for IranSans font */
+.font-byekan {
+  font-family: "IranSans", sans-serif !important;
+}
+
+/* Custom font utilities */
+.font-persian {
+  font-family: "IranSans", sans-serif !important;
+}
+
+/* AG Grid font override */
+.ag-theme-balham,
+.ag-theme-alpine,
+.ag-theme-material {
+  font-family: "IranSans", sans-serif !important;
+}
+
+.ag-theme-balham .ag-header-cell,
+.ag-theme-balham .ag-cell,
+.ag-theme-alpine .ag-header-cell,
+.ag-theme-alpine .ag-cell,
+.ag-theme-material .ag-header-cell,
+.ag-theme-material .ag-cell {
+  font-family: "IranSans", sans-serif !important;
+}
+
+.ant-modal{
+  padding-bottom: 0 !important;
+}
+
+/* AG Grid Container Fixes */
+.ag-grid-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.ag-grid-container .ag-theme-balham {
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+
+/* AG Grid Column Auto-sizing */
+.ag-theme-balham .ag-header-cell,
+.ag-theme-balham .ag-cell {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+/* AG Grid Pagination Container */
+.ag-theme-balham .ag-paging-panel {
+  border-top: 1px solid var(--ag-border-color) !important;
+  background-color: var(--ag-background-color) !important;
+}
+
+/* Dark mode fixes for AG Grid */
+.dark .ag-theme-balham {
+  --ag-background-color: #1f2937 !important;
+  --ag-header-background-color: #374151 !important;
+  --ag-border-color: #4b5563 !important;
+  --ag-odd-row-background-color: #1f2937 !important;
+  --ag-even-row-background-color: #111827 !important;
+  --ag-foreground-color: #f9fafb !important;
+  --ag-secondary-foreground-color: #d1d5db !important;
+}
+
+/* AG Grid Mobile Responsive */
+@media (max-width: 768px) {
+  .ag-grid-container {
+    overflow-x: auto !important;
+  }
+  
+  .ag-theme-balham .ag-header-cell,
+  .ag-theme-balham .ag-cell {
+    min-width: 80px !important;
+    font-size: 12px !important;
+  }
+  
+  .ag-theme-balham .ag-paging-panel {
+    padding: 8px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* AG Grid Tablet Responsive */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .ag-theme-balham .ag-header-cell,
+  .ag-theme-balham .ag-cell {
+    min-width: 90px !important;
+    font-size: 13px !important;
+  }
+}
+
+/* AG Grid Scrollbar Styling */
+.ag-theme-balham .ag-body-viewport::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.ag-theme-balham .ag-body-viewport::-webkit-scrollbar-track {
+  background: var(--ag-background-color);
+}
+
+.ag-theme-balham .ag-body-viewport::-webkit-scrollbar-thumb {
+  background: var(--ag-border-color);
+  border-radius: 4px;
+}
+
+.ag-theme-balham .ag-body-viewport::-webkit-scrollbar-thumb:hover {
+  background: var(--ag-secondary-foreground-color);
+}
+.ant-input{
+  min-height: 40px !important;
+}
+button {
+  height: 40px !important;
+  border-radius: 12px !important;
+}
+
+.rmdp-container {
+  width: 100% !important;
+  align-items: center !important;
+}
+.rmdp-container button {
+  height: 20px !important;
+}
+.dark .rmdp-header-values ,
+.dark .rmdp-day{
+  color: #F2F2F2 !important;
+} 
+.dark .rmdp-month-picker, .rmdp-year-picker {
+  background-color: #333333 !important;
+}

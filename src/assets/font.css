@@ -1,0 +1,247 @@
+
+@font-face {
+  font-family: "IranSans";
+  src: url("/fonts/IranSans/IRANSans(FaNum).ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IranSans";
+  src: url("/fonts/IranSans/IRANSans(FaNum)_Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IranSans";
+  src: url("/fonts/IranSans/IRANSans(FaNum)_Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IranSans";
+  src: url("/fonts/IranSans/IRANSans(FaNum)_Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IranSans";
+  src: url("/fonts/IranSans/IRANSans(FaNum)_UltraLight.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IranSansX";
+  src: url("/fonts/IranSans/IRANSansXFaNum-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IranSansX";
+  src: url("/fonts/IranSans/IRANSansXFaNum-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Global Font Settings */
+* {
+  font-family: "IranSans", sans-serif !important;
+}
+
+body {
+  font-family: "IranSans", sans-serif !important;
+  font-variant-numeric: normal;
+  font-feature-settings: normal;
+}
+
+/* Persian Numbers - Default */
+.persian-numbers,
+.persian-numbers * {
+  font-family: "IranSans", sans-serif !important;
+  font-variant-numeric: normal !important;
+  font-feature-settings: normal !important;
+}
+
+/* Form Elements */
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="search"],
+textarea,
+select {
+  font-family: "IranSans", sans-serif !important;
+  direction: ltr;
+  text-align: left;
+  height: 40px;
+}
+
+/* AG Grid Font Override */
+.ag-cell,
+.ag-header-cell,
+td,
+th {
+  font-family: "IranSans", sans-serif !important;
+}
+
+.ag-theme-balham,
+.ag-theme-alpine,
+.ag-theme-material {
+  font-family: "IranSans", sans-serif !important;
+}
+
+.ag-theme-balham .ag-header-cell,
+.ag-theme-balham .ag-cell,
+.ag-theme-alpine .ag-header-cell,
+.ag-theme-alpine .ag-cell,
+.ag-theme-material .ag-header-cell,
+.ag-theme-material .ag-cell {
+  font-family: "IranSans", sans-serif !important;
+}
+
+/* SVG and Toast Fonts */
+svg {
+  font-family: "IranSans", sans-serif !important;
+}
+
+.Toastify__toast,
+.Toastify__toast-body,
+.Toastify__toast-icon {
+  font-family: "IranSans", sans-serif !important;
+}
+
+.react-query-dev-tools {
+  font-family: "IranSans", sans-serif !important;
+}
+
+/* English Fonts - Using System Fonts */
+/* Font Family Classes */
+.font-inter {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.font-roboto {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.font-source-sans {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.font-open-sans {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Default English Font */
+.font-english {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  font-variation-settings: normal;
+}
+
+/* Font Weight Utilities */
+.font-light {
+  font-weight: 300;
+}
+
+.font-normal {
+  font-weight: 400;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+/* Typography Scale */
+.text-xs-eng {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.text-sm-eng {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-base-eng {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text-lg-eng {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-xl-eng {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-2xl-eng {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-3xl-eng {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+/* Letter Spacing */
+.tracking-tight {
+  letter-spacing: -0.025em;
+}
+
+.tracking-normal {
+  letter-spacing: 0em;
+}
+
+.tracking-wide {
+  letter-spacing: 0.025em;
+}
+
+/* Line Height */
+.leading-none {
+  line-height: 1;
+}
+
+.leading-tight {
+  line-height: 1.25;
+}
+
+.leading-snug {
+  line-height: 1.375;
+}
+
+.leading-normal {
+  line-height: 1.5;
+}
+
+.leading-relaxed {
+  line-height: 1.625;
+}
+
+.leading-loose {
+  line-height: 2;
+}
