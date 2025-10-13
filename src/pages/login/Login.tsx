@@ -120,7 +120,7 @@ const LoginView = () => {
                       <ProfileIcon width={20} height={20} color="#999999" />
                     }
                     placeholder="نام کاربری"
-                    className="!h-10 sm:!h-12 md:!h-14 !text-sm sm:!text-base md:!text-lg !rounded-lg !border !border-gray-300 hover:!border-blue-400 focus:!border-blue-500 !shadow-sm dir-rtl !bg-white"
+                    className="!h-10 sm:!h-12 md:!h-14 !text-sm sm:!text-base md:!text-lg !rounded-lg !border !border-gray-300 hover:!border-green-500 focus:!border-green-500 !shadow-sm dir-rtl !bg-white"
                   />
                 </Form.Item>
               </div>
@@ -140,7 +140,7 @@ const LoginView = () => {
                     size="large"
                     prefix={<LockIcon width={20} height={20} color="#999999" />}
                     placeholder="رمز عبور"
-                    className="!h-10 sm:!h-12 md:!h-14 !text-sm sm:!text-base md:!text-lg !rounded-lg !border !border-gray-300 hover:!border-blue-400 focus:!border-blue-500 !shadow-sm dir-rtl !bg-white"
+                    className="!h-10 sm:!h-12 md:!h-14 !text-sm sm:!text-base md:!text-lg !rounded-lg !border !border-gray-300 hover:!border-green-500 focus:!border-green-500 !shadow-sm dir-rtl !bg-white"
                     iconRender={(visible) =>
                       visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
                     }
@@ -171,7 +171,7 @@ const LoginView = () => {
                 <Button
                   htmlType="submit"
                   type="primary"
-                  className="!w-full !bg-blue-400 hover:!bg-blue-500 !h-10 sm:!h-12 md:!h-14 !text-sm sm:!text-base md:!text-lg !font-medium !rounded-lg !shadow-md hover:!shadow-lg !border-0 !transition-all !duration-300 !text-white"
+                  className="!w-full !bg-green-300 hover:!bg-green-500 !h-10 sm:!h-12 md:!h-14 !text-sm sm:!text-base md:!text-lg !font-medium !rounded-lg !shadow-md hover:!shadow-lg !border-0 !transition-all !duration-300 !text-white"
                   size="large"
                   loading={isLoading}
                 >

@@ -12,6 +12,10 @@
   font-family: "IranSans", sans-serif !important;
 }
 
+/* Ant Design  */
+.ant-modal {
+  padding-bottom: 0 !important;
+}
 /* AG Grid font override */
 .ag-theme-balham,
 .ag-theme-alpine,
@@ -28,10 +32,6 @@
   font-family: "IranSans", sans-serif !important;
 }
 
-.ant-modal{
-  padding-bottom: 0 !important;
-}
-
 /* AG Grid Container Fixes */
 .ag-grid-container {
   width: 100%;
@@ -45,7 +45,6 @@
   height: 100% !important;
   overflow: hidden !important;
 }
-
 
 /* AG Grid Column Auto-sizing */
 .ag-theme-balham .ag-header-cell,
@@ -77,13 +76,13 @@
   .ag-grid-container {
     overflow-x: auto !important;
   }
-  
+
   .ag-theme-balham .ag-header-cell,
   .ag-theme-balham .ag-cell {
     min-width: 80px !important;
     font-size: 12px !important;
   }
-  
+
   .ag-theme-balham .ag-paging-panel {
     padding: 8px !important;
     font-size: 12px !important;
@@ -117,7 +116,7 @@
 .ag-theme-balham .ag-body-viewport::-webkit-scrollbar-thumb:hover {
   background: var(--ag-secondary-foreground-color);
 }
-.ant-input{
+.ant-input {
   min-height: 40px !important;
 }
 button {
@@ -132,10 +131,11 @@ button {
 .rmdp-container button {
   height: 20px !important;
 }
-.dark .rmdp-header-values ,
-.dark .rmdp-day{
-  color: #F2F2F2 !important;
-} 
-.dark .rmdp-month-picker, .rmdp-year-picker {
+.dark .rmdp-header-values,
+.dark .rmdp-day {
+  color: #f2f2f2 !important;
+}
+.dark .rmdp-month-picker,
+.rmdp-year-picker {
   background-color: #333333 !important;
 }
