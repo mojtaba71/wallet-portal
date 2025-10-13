@@ -87,13 +87,8 @@ const LoginView = () => {
               </h2>
               <div className="flex gap-2 md:gap-3">
                 <img
-                  src="/images/banksina1.png"
-                  alt="لوگو بانک سینا"
-                  className="w-20 h-12 sm:w-24 sm:h-16 md:w-24 md:h-20"
-                />
-                <img
-                  src="/images/green-logo.png"
-                  alt="لوگو گرین"
+                  src="/images/logo-wallet.png"
+                  alt="لوگو ولت"
                   className="w-20 h-12 sm:w-24 sm:h-16 md:w-24 md:h-20"
                 />
               </div>
@@ -186,15 +181,15 @@ const LoginView = () => {
             </Form>
 
             <div className="mt-6 md:mt-8 lg:mt-10 text-center">
-              <p className="text-xs sm:text-sm md:text-base text-gray-600 mb-1">
-                پورتال هاب بانک سینا
+              <p className="text-xs md:text-sm text-gray-900 mb-1">
+                پرتال کیف پول
               </p>
               <p className="text-xs text-gray-500">نسخه ۱.۰.۰</p>
             </div>
           </div>
           <div className="hidden md:block w-full md:w-1/2 p-4 md:p-6 lg:p-8">
             <img
-              src="/images/img-login-preview.png"
+              src="/images/bg-wallet.png"
               alt="عکس پس‌زمینه"
               className="w-full h-full object-contain rounded-lg"
             />
