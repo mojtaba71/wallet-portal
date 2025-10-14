@@ -1,13 +1,14 @@
 // DashboardView.tsx
 import { BarChart, type BarChartData } from "@/components/charts/BarChart";
 import { PieChart, type ChartData } from "@/components/charts/PieChart";
-import {
-  useBusinessBalance,
-  useBusinessSummary,
-  useDailyTransactionSummary,
-  useTodayTransactionSummary,
-  useTotalBalance,
-} from "@/services/hook/dashboardService.hook";
+// Temporarily commented out imports to prevent errors
+// import {
+//   useBusinessBalance,
+//   useBusinessSummary,
+//   useDailyTransactionSummary,
+//   useTodayTransactionSummary,
+//   useTotalBalance,
+// } from "@/services/hook/dashboardService.hook";
 import { formatPersianDate } from "@/utils/utils";
 import React, { useState, useEffect } from "react";
 import {
@@ -24,7 +25,6 @@ interface StatCardProps {
   icon: React.ReactNode;
   isLoading?: boolean;
 }
-
 
 const StatCard: React.FC<StatCardProps> = ({
   title,
@@ -55,9 +55,7 @@ const StatCard: React.FC<StatCardProps> = ({
       <div className="flex flex-col h-full">
         <div className="flex justify-start mb-3">
           <div className="!w-8 !h-8 sm:!w-10 sm:!h-10 md:!w-12 md:!h-12 !bg-blue-100 !rounded-full flex items-center justify-center flex-shrink-0">
-            <div className="!text-blue-500">
-              {icon}
-            </div>
+            <div className="!text-blue-500">{icon}</div>
           </div>
         </div>
         <div className="flex flex-col">
@@ -76,15 +74,48 @@ const StatCard: React.FC<StatCardProps> = ({
 export default function DashboardView() {
   const [isMobile, setIsMobile] = useState(false);
 
-  const { data: todaySummary, isLoading: todayLoading } =
-    useTodayTransactionSummary();
-  const { data: totalBalance, isLoading: balanceLoading } = useTotalBalance();
-  const { data: businessBalance, isLoading: businesBalanceLoading } =
-    useBusinessBalance();
-  const { data: dailySummary, isLoading: dailyLoading } =
-    useDailyTransactionSummary();
-  const { data: businessSummary, isLoading: businessSummaryLoading } =
-    useBusinessSummary();
+  // Temporarily commented out API requests to prevent errors
+  // const { data: todaySummary, isLoading: todayLoading } =
+  //   useTodayTransactionSummary();
+  // const { data: totalBalance, isLoading: balanceLoading } = useTotalBalance();
+  // const { data: businessBalance, isLoading: businesBalanceLoading } =
+  //   useBusinessBalance();
+  // const { data: dailySummary, isLoading: dailyLoading } =
+  //   useDailyTransactionSummary();
+  // const { data: businessSummary, isLoading: businessSummaryLoading } =
+  //   useBusinessSummary();
+
+  // Mock data for testing
+  const todaySummary = {
+    todaySuccessCount: 0,
+    todayFailedCount: 0,
+    todaySuccessAmount: 0,
+  };
+  const totalBalance = { balance: 0 };
+  const businessBalance = {
+    businessInfoList: [
+      { name: "کسب و کار ۱", balance: 0 },
+      { name: "کسب و کار ۲", balance: 0 },
+    ],
+  };
+  const dailySummary = {
+    transactionSummaryList: [
+      { date: "1403/01/01", successCount: 0, failureCount: 0 },
+      { date: "1403/01/02", successCount: 0, failureCount: 0 },
+      { date: "1403/01/03", successCount: 0, failureCount: 0 },
+    ],
+  };
+  const businessSummary = {
+    businessSummaryList: [
+      { businessName: "کسب و کار ۱", transactionCount: 0 },
+      { businessName: "کسب و کار ۲", transactionCount: 0 },
+    ],
+  };
+  const todayLoading = false;
+  const balanceLoading = false;
+  const businesBalanceLoading = false;
+  const dailyLoading = false;
+  const businessSummaryLoading = false;
 
   useEffect(() => {
     const checkMobile = () => {
@@ -148,52 +179,38 @@ export default function DashboardView() {
       businessSummary?.businessSummaryList?.map(
         (item) => item.transactionCount
       ) || [],
-    colors: [
-      "#4A3AFF",
-      "#E4CBFF",
-      "#FF6B3A",
-      "#FFD9CC",
-      "#FFB03A",
-      "#FFEBCC",
-    ],
+    colors: ["#4A3AFF", "#E4CBFF", "#FF6B3A", "#FFD9CC", "#FFB03A", "#FFEBCC"],
   };
 
   return (
     <SimpleBar className="h-full" autoHide={false}>
       <div className="!p-2 sm:!p-3 md:!p-4 lg:!p-6 h-full">
-
         {/* Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-6">
           <StatCard
             title="تراکنش‌های موفق روز جاری"
             value={todaySummary?.todaySuccessCount || 0}
-            icon={
-              <TbTrendingUp className="!w-5 !h-5 md:!w-6 md:!h-6" />
-            }
+            icon={<TbTrendingUp className="!w-5 !h-5 md:!w-6 md:!h-6" />}
             isLoading={todayLoading}
           />
           <StatCard
             title="تراکنش‌های ناموفق روز جاری"
             value={todaySummary?.todayFailedCount || 0}
-            icon={
-              <TbTrendingDown className="!w-5 !h-5 md:!w-6 md:!h-6" />
-            }
+            icon={<TbTrendingDown className="!w-5 !h-5 md:!w-6 md:!h-6" />}
             isLoading={todayLoading}
           />
           <StatCard
             title="مبلغ تراکنش‌های موفق روز جاری"
-            value={`${(todaySummary?.todaySuccessAmount || 0).toLocaleString()} ریال`}
-            icon={
-              <TbCreditCard className="!w-5 !h-5 md:!w-6 md:!h-6" />
-            }
+            value={`${(
+              todaySummary?.todaySuccessAmount || 0
+            ).toLocaleString()} ریال`}
+            icon={<TbCreditCard className="!w-5 !h-5 md:!w-6 md:!h-6" />}
             isLoading={todayLoading}
           />
           <StatCard
             title="موجودی کل کسب‌وکارها"
             value={`${(totalBalance?.balance || 0).toLocaleString()} ریال`}
-            icon={
-              <TbMoneybag className="!w-5 !h-5 md:!w-6 md:!h-6" />
-            }
+            icon={<TbMoneybag className="!w-5 !h-5 md:!w-6 md:!h-6" />}
             isLoading={balanceLoading}
           />
         </div>

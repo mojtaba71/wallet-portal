@@ -1,23 +1,7 @@
 import { useState, useEffect } from "react";
-import {
-  Dropdown,
-  Modal,
-  Form,
-  Input,
-  Button,
-  message,
-  Avatar,
-} from "antd";
-import {
-  MdLightMode,
-  MdMenu,
-  MdPerson,
-} from "react-icons/md";
-import { 
-  NotificationIcon,
-  MoonIcon,
-  UserIcon
-} from "@/assets/icons";
+import { Dropdown, Modal, Form, Input, Button, message, Avatar } from "antd";
+import { MdLightMode, MdMenu, MdPerson } from "react-icons/md";
+import { NotificationIcon, MoonIcon, UserIcon } from "@/assets/icons";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "@/store";
@@ -117,15 +101,9 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
         >
           <MdMenu className="text-xl !text-gray-600 dark:!text-gray-200" />
         </button>
-
         <img
-          src="/images/banksina1-removebg-preview.png"
-          alt="بانک سینا"
-          className="h-6 md:h-10 lg:h-12 transition-transform duration-200 hover:scale-105 dark:bg-white dark:rounded-md dark:p-1"
-        />
-        <img
-          src="/images/green-logo.png"
-          alt="لوگو گرین"
+          src="/images/logo-wallet.png"
+          alt="لوگو کیف پول"
           className="h-6 md:h-10 lg:h-12 transition-transform duration-200 hover:scale-105 dark:bg-white dark:rounded-md dark:p-1"
         />
         {/* <img
@@ -136,25 +114,29 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
       </div>
 
       <div className="flex items-center gap-1 md:gap-3 lg:gap-4">
-          <div className="group cursor-pointer w-10 h-10 rounded-full bg-white dark:bg-gray-800 border border-gray-250 dark:border-gray-250 flex items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200">
-            <NotificationIcon 
-              width={isMobile ? 14 : 18} 
-              height={isMobile ? 14 : 18} 
-              color={theme === "dark" ? "#F2F2F2" : "#292D32"} 
-            />
-          </div>
+        <div className="group cursor-pointer w-10 h-10 rounded-full bg-white dark:bg-gray-800 border border-gray-250 dark:border-gray-250 flex items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200">
+          <NotificationIcon
+            width={isMobile ? 14 : 18}
+            height={isMobile ? 14 : 18}
+            color={theme === "dark" ? "#F2F2F2" : "#292D32"}
+          />
+        </div>
 
         <div
           className="group cursor-pointer w-10 h-10 rounded-full bg-white dark:bg-gray-800 border border-gray-250 dark:border-gray-250 flex items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200"
           onClick={handleThemeToggle}
         >
           {theme === "dark" ? (
-            <MdLightMode className={`${isMobile ? 'text-sm' : 'text-lg'} text-yellow-500 group-hover:text-yellow-600 transition-colors duration-200`} />
+            <MdLightMode
+              className={`${
+                isMobile ? "text-sm" : "text-lg"
+              } text-yellow-500 group-hover:text-yellow-600 transition-colors duration-200`}
+            />
           ) : (
-            <MoonIcon 
-              width={isMobile ? 14 : 18} 
-              height={isMobile ? 14 : 18} 
-              color="#292D32" 
+            <MoonIcon
+              width={isMobile ? 14 : 18}
+              height={isMobile ? 14 : 18}
+              color="#292D32"
             />
           )}
         </div>
@@ -165,10 +147,10 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
           trigger={["click"]}
         >
           <div className="group cursor-pointer w-10 h-10 rounded-full bg-white dark:bg-gray-800 border border-gray-250 dark:border-gray-250 flex items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200">
-            <UserIcon 
-              width={isMobile ? 14 : 18} 
-              height={isMobile ? 14 : 18} 
-              color={theme === "dark" ? "#F2F2F2" : "#292D32"} 
+            <UserIcon
+              width={isMobile ? 14 : 18}
+              height={isMobile ? 14 : 18}
+              color={theme === "dark" ? "#F2F2F2" : "#292D32"}
             />
           </div>
         </Dropdown>
