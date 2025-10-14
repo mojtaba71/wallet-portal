@@ -28,4 +28,6 @@ export const API_ENDPOINTS = {
   GET_BUSINESS_BALANCE: "/dashboard/businessbalance",
   GET_BUSINESS_SUMMARY: "/dashboard/businesssummary",
   GET_DAILY_TRANSACTION_SUMMARY: "/dashboard/dailytransactionsummary",
+
+  SEARCH_CUSTOMER: "/customer/searchperson",
 };

@@ -43,6 +43,10 @@ import type {
   GetBusinessDepositStatementsRequest,
   GetBusinessDepositStatementsResponse,
 } from "@/models/reports.model";
+import type {
+  CustomerSearchRequest,
+  CustomerSearchResponse,
+} from "@/models/customer.model";
 
 class Client {
   auth = {
@@ -115,7 +119,9 @@ class Client {
         API_ENDPOINTS.RESET_BUSINESS_MASTER_KEY,
         input
       ),
-    resetBusinessServiceTemplate: (input: ResetBusinessServiceTemplateRequest) =>
+    resetBusinessServiceTemplate: (
+      input: ResetBusinessServiceTemplateRequest
+    ) =>
       HttpClient.post<ResetBusinessServiceTemplateResponse>(
         API_ENDPOINTS.RESET_BUSINESS_SERVICE_TEMPLATE,
         input
@@ -146,14 +152,24 @@ class Client {
         API_ENDPOINTS.GET_CARD_EVENTS,
         input
       ),
-    getBusinessDepositStatements: (input: GetBusinessDepositStatementsRequest) =>
+    getBusinessDepositStatements: (
+      input: GetBusinessDepositStatementsRequest
+    ) =>
       HttpClient.post<GetBusinessDepositStatementsResponse>(
         API_ENDPOINTS.GET_BUSINESS_DEPOSIT_STATEMENTS,
         input
       ),
-    getSettlementReport: (input: import("@/models/reports.model").GetSettlementReportRequest) =>
-      HttpClient.post<import("@/models/reports.model").GetSettlementReportResponse>(
-        API_ENDPOINTS.GET_SETTLEMENT_REPORT,
+    getSettlementReport: (
+      input: import("@/models/reports.model").GetSettlementReportRequest
+    ) =>
+      HttpClient.post<
+        import("@/models/reports.model").GetSettlementReportResponse
+      >(API_ENDPOINTS.GET_SETTLEMENT_REPORT, input),
+  };
+  customer = {
+    searchCustomer: (input: CustomerSearchRequest) =>
+      HttpClient.post<CustomerSearchResponse>(
+        API_ENDPOINTS.SEARCH_CUSTOMER,
         input
       ),
   };
