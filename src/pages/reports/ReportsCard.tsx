@@ -28,7 +28,6 @@ import {
 } from "react-icons/md";
 import SimpleBar from "simplebar-react";
 
-
 interface SearchTransactionFrom {
   pan?: number;
   startDate?: any;
@@ -142,7 +141,7 @@ const ReportsCardView: React.FC = () => {
     mutateTransactionCard(
       {
         offset: 0,
-            count: 999,
+        count: 999,
         startDate: convertToJalaliString(startDate),
         endDate: convertToJalaliString(endDate),
         pan: pan ? +pan : undefined,
@@ -204,12 +203,23 @@ const ReportsCardView: React.FC = () => {
       valueFormatter: (p) => FunctionCodeType[p.value],
       filter: "agSetColumnFilter",
       filterParams: {
-        values: Object.keys(FunctionCodeType).map(key => parseInt(key)),
-        valueFormatter: (params: any) => FunctionCodeType[params.value] || params.value,
+        values: Object.keys(FunctionCodeType).map((key) => parseInt(key)),
+        valueFormatter: (params: any) =>
+          FunctionCodeType[params.value] || params.value,
       },
     },
-    { field: "rrn", headerName: "شماره مرجع", flex: 1, filter: "agNumberColumnFilter" },
-    { field: "stan", headerName: "شماره پیگیری", flex: 1, filter: "agNumberColumnFilter" },
+    {
+      field: "rrn",
+      headerName: "شماره مرجع",
+      flex: 1,
+      filter: "agNumberColumnFilter",
+    },
+    {
+      field: "stan",
+      headerName: "شماره پیگیری",
+      flex: 1,
+      filter: "agNumberColumnFilter",
+    },
     {
       field: "amount",
       headerName: "مبلغ",
@@ -217,12 +227,42 @@ const ReportsCardView: React.FC = () => {
       valueFormatter: (p) => p.value?.toLocaleString(),
       filter: "agNumberColumnFilter",
     },
-    { field: "acquiringInstitute", headerName: "کد موسسه پذیرنده", flex: 1, filter: "agNumberColumnFilter" },
-    { field: "receivingBusiness", headerName: "شناسه کسب‌وکار", flex: 1, filter: "agNumberColumnFilter" },
-    { field: "destinationPan", headerName: "شماره کارت مقصد", flex: 1, filter: "agNumberColumnFilter" },
-    { field: "merchantId", headerName: "کد پذیرنده", flex: 1, filter: "agNumberColumnFilter" },
-    { field: "merchantName", headerName: "نام پذیرنده", flex: 1, filter: "agTextColumnFilter" },
-    { field: "mcc", headerName: "کد صنف", flex: 1, filter: "agNumberColumnFilter" },
+    {
+      field: "acquiringInstitute",
+      headerName: "کد موسسه پذیرنده",
+      flex: 1,
+      filter: "agNumberColumnFilter",
+    },
+    {
+      field: "receivingBusiness",
+      headerName: "شناسه کسب‌وکار",
+      flex: 1,
+      filter: "agNumberColumnFilter",
+    },
+    {
+      field: "destinationPan",
+      headerName: "شماره کارت مقصد",
+      flex: 1,
+      filter: "agNumberColumnFilter",
+    },
+    {
+      field: "merchantId",
+      headerName: "کد پذیرنده",
+      flex: 1,
+      filter: "agNumberColumnFilter",
+    },
+    {
+      field: "merchantName",
+      headerName: "نام پذیرنده",
+      flex: 1,
+      filter: "agTextColumnFilter",
+    },
+    {
+      field: "mcc",
+      headerName: "کد صنف",
+      flex: 1,
+      filter: "agNumberColumnFilter",
+    },
     {
       field: "terminalId",
       headerName: "کد پایانه",
@@ -236,8 +276,9 @@ const ReportsCardView: React.FC = () => {
       valueFormatter: (p) => TerminalType[p.value],
       filter: "agSetColumnFilter",
       filterParams: {
-        values: Object.keys(TerminalType).map(key => parseInt(key)),
-        valueFormatter: (params: any) => TerminalType[params.value] || params.value,
+        values: Object.keys(TerminalType).map((key) => parseInt(key)),
+        valueFormatter: (params: any) =>
+          TerminalType[params.value] || params.value,
       },
     },
     {
@@ -267,8 +308,8 @@ const ReportsCardView: React.FC = () => {
         valueFormatter: (params: any) => {
           const statusMap: { [key: number]: string } = {
             0: "ناقص",
-            10: "کامل", 
-            20: "برگشت خورده"
+            10: "کامل",
+            20: "برگشت خورده",
           };
           return statusMap[params.value] || params.value;
         },
@@ -293,7 +334,9 @@ const ReportsCardView: React.FC = () => {
               ردیف {index + 1}
             </span>
             <MdCreditCard className="!text-blue-500 !text-xl" />
-            <span className="!text-sm !text-gray-500 dark:!text-gray-400 dark:!text-gray-400">تراکنش کارت</span>
+            <span className="!text-sm !text-gray-500 dark:!text-gray-400 ">
+              تراکنش کارت
+            </span>
           </div>
           <Tag
             color={
@@ -307,7 +350,7 @@ const ReportsCardView: React.FC = () => {
           </Tag>
         </div>
 
-        <div className="!text-lg !font-bold !text-gray-800 dark:!text-gray-200 dark:!text-gray-200 !text-center !py-2 !bg-gray-50 dark:!bg-gray-800 dark:!bg-gray-800 !rounded-lg">
+        <div className="!text-lg !font-bold !text-gray-800 dark:!text-gray-200  !text-center !py-2 !bg-gray-50  dark:!bg-gray-800 !rounded-lg">
           {transaction.amount?.toLocaleString()} ریال
         </div>
 
@@ -315,7 +358,9 @@ const ReportsCardView: React.FC = () => {
           <div className="!flex !items-center !gap-2">
             <MdCreditCard className="!text-purple-500 !text-base" />
             <div>
-              <div className="!text-xs !text-gray-500 dark:!text-gray-400 dark:!text-gray-400">شماره کارت</div>
+              <div className="!text-xs !text-gray-500 dark:!text-gray-400 ">
+                شماره کارت
+              </div>
               <div className="!text-sm !font-medium">{transaction.pan}</div>
             </div>
           </div>
@@ -323,7 +368,9 @@ const ReportsCardView: React.FC = () => {
           <div className="!flex !items-center !gap-2">
             <MdCalendarToday className="!text-orange-500 !text-base" />
             <div>
-              <div className="!text-xs !text-gray-500 dark:!text-gray-400 dark:!text-gray-400">تاریخ تراکنش</div>
+              <div className="!text-xs !text-gray-500 dark:!text-gray-400 ">
+                تاریخ تراکنش
+              </div>
               <div className="!text-sm !font-medium">
                 {transaction.transactionDateTime}
               </div>
@@ -335,7 +382,9 @@ const ReportsCardView: React.FC = () => {
           <div className="!flex !items-center !gap-2">
             <MdAttachMoney className="!text-green-500 !text-base" />
             <div>
-              <div className="!text-xs !text-gray-500 dark:!text-gray-400 dark:!text-gray-400">نوع تراکنش</div>
+              <div className="!text-xs !text-gray-500 dark:!text-gray-400 ">
+                نوع تراکنش
+              </div>
               <div className="!text-sm !font-medium">
                 {FunctionCodeType[transaction.functionCode]}
               </div>
@@ -345,7 +394,9 @@ const ReportsCardView: React.FC = () => {
           <div className="!flex !items-center !gap-2">
             <MdStore className="!text-blue-500 !text-base" />
             <div>
-              <div className="!text-xs !text-gray-500 dark:!text-gray-400 dark:!text-gray-400">نوع پایانه</div>
+              <div className="!text-xs !text-gray-500 dark:!text-gray-400 ">
+                نوع پایانه
+              </div>
               <div className="!text-sm !font-medium">
                 {TerminalType[transaction.terminalType]}
               </div>
@@ -357,7 +408,9 @@ const ReportsCardView: React.FC = () => {
           <div className="!flex !items-center !gap-2">
             <MdReceipt className="!text-purple-500 !text-base" />
             <div>
-              <div className="!text-xs !text-gray-500 dark:!text-gray-400 dark:!text-gray-400">شماره مرجع</div>
+              <div className="!text-xs !text-gray-500 dark:!text-gray-400 ">
+                شماره مرجع
+              </div>
               <div className="!text-sm !font-medium">{transaction.rrn}</div>
             </div>
           </div>
@@ -365,7 +418,9 @@ const ReportsCardView: React.FC = () => {
           <div className="!flex !items-center !gap-2">
             <MdReceipt className="!text-purple-500 !text-base" />
             <div>
-              <div className="!text-xs !text-gray-500 dark:!text-gray-400 dark:!text-gray-400">شماره پیگیری</div>
+              <div className="!text-xs !text-gray-500 dark:!text-gray-400 ">
+                شماره پیگیری
+              </div>
               <div className="!text-sm !font-medium">{transaction.stan}</div>
             </div>
           </div>
@@ -375,7 +430,9 @@ const ReportsCardView: React.FC = () => {
           <div className="!flex !items-center !gap-2">
             <MdStore className="!text-indigo-500 !text-base" />
             <div>
-              <div className="!text-xs !text-gray-500 dark:!text-gray-400 dark:!text-gray-400">کد موسسه پذیرنده</div>
+              <div className="!text-xs !text-gray-500 dark:!text-gray-400 ">
+                کد موسسه پذیرنده
+              </div>
               <div className="!text-sm !font-medium">
                 {transaction.acquiringInstitute}
               </div>
@@ -385,7 +442,9 @@ const ReportsCardView: React.FC = () => {
           <div className="!flex !items-center !gap-2">
             <MdStore className="!text-indigo-500 !text-base" />
             <div>
-              <div className="!text-xs !text-gray-500 dark:!text-gray-400 dark:!text-gray-400">شناسه کسب‌وکار</div>
+              <div className="!text-xs !text-gray-500 dark:!text-gray-400 ">
+                شناسه کسب‌وکار
+              </div>
               <div className="!text-sm !font-medium">
                 {transaction.receivingBusiness}
               </div>
@@ -397,7 +456,9 @@ const ReportsCardView: React.FC = () => {
           <div className="!flex !items-center !gap-2">
             <MdCreditCard className="!text-blue-500 !text-base" />
             <div>
-              <div className="!text-xs !text-gray-500 dark:!text-gray-400 dark:!text-gray-400">شماره کارت مقصد</div>
+              <div className="!text-xs !text-gray-500 dark:!text-gray-400 ">
+                شماره کارت مقصد
+              </div>
               <div className="!text-sm !font-medium">
                 {transaction.destinationPan || "-"}
               </div>
@@ -407,7 +468,9 @@ const ReportsCardView: React.FC = () => {
           <div className="!flex !items-center !gap-2">
             <MdStore className="!text-green-500 !text-base" />
             <div>
-              <div className="!text-xs !text-gray-500 dark:!text-gray-400 dark:!text-gray-400">کد پذیرنده</div>
+              <div className="!text-xs !text-gray-500 dark:!text-gray-400 ">
+                کد پذیرنده
+              </div>
               <div className="!text-sm !font-medium">
                 {transaction.merchantId}
               </div>
@@ -419,7 +482,9 @@ const ReportsCardView: React.FC = () => {
           <div className="!flex !items-center !gap-2">
             <MdStore className="!text-orange-500 !text-base" />
             <div>
-              <div className="!text-xs !text-gray-500 dark:!text-gray-400 dark:!text-gray-400">نام پذیرنده</div>
+              <div className="!text-xs !text-gray-500 dark:!text-gray-400 ">
+                نام پذیرنده
+              </div>
               <div className="!text-sm !font-medium">
                 {transaction.merchantName}
               </div>
@@ -429,7 +494,9 @@ const ReportsCardView: React.FC = () => {
           <div className="!flex !items-center !gap-2">
             <MdStore className="!text-red-500 !text-base" />
             <div>
-              <div className="!text-xs !text-gray-500 dark:!text-gray-400 dark:!text-gray-400">کد صنف</div>
+              <div className="!text-xs !text-gray-500 dark:!text-gray-400 ">
+                کد صنف
+              </div>
               <div className="!text-sm !font-medium">{transaction.mcc}</div>
             </div>
           </div>
@@ -439,7 +506,9 @@ const ReportsCardView: React.FC = () => {
           <div className="!flex !items-center !gap-2">
             <MdStore className="!text-teal-500 !text-base" />
             <div>
-              <div className="!text-xs !text-gray-500 dark:!text-gray-400 dark:!text-gray-400">کد پایانه</div>
+              <div className="!text-xs !text-gray-500 dark:!text-gray-400 ">
+                کد پایانه
+              </div>
               <div className="!text-sm !font-medium">
                 {transaction.terminalId}
               </div>
@@ -452,19 +521,16 @@ const ReportsCardView: React.FC = () => {
 
   return (
     <div className="p-2 sm:p-3 md:p-4 h-full flex flex-col">
-     
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-100 dark:border-gray-400">
-      <Form
-        form={form}
-        onFinish={onFinish}
-        layout="vertical"
-      >
+        <Form form={form} onFinish={onFinish} layout="vertical">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-            <Form.Item 
-              name="pan" 
-              label={<span className="dark:text-gray-50">شماره کارت</span>} 
+            <Form.Item
+              name="pan"
+              label={<span className="dark:text-gray-50">شماره کارت</span>}
               className="!mb-0"
-              rules={[{ required: true, message: "لطفاً شماره کارت را وارد کنید" }]}
+              rules={[
+                { required: true, message: "لطفاً شماره کارت را وارد کنید" },
+              ]}
             >
               <InputNumber className="!w-full dir-ltr" />
             </Form.Item>
@@ -473,7 +539,9 @@ const ReportsCardView: React.FC = () => {
               name="startDate"
               label={<span className="dark:text-gray-50">از تاریخ</span>}
               className="!mb-0"
-              rules={[{ required: true, message: "لطفاً از تاریخ را وارد کنید" }]}
+              rules={[
+                { required: true, message: "لطفاً از تاریخ را وارد کنید" },
+              ]}
             >
               <DatePicker className="!w-full" />
             </Form.Item>
@@ -482,7 +550,9 @@ const ReportsCardView: React.FC = () => {
               name="endDate"
               label={<span className="dark:text-gray-50">تا تاریخ</span>}
               className="!mb-0"
-              rules={[{ required: true, message: "لطفاً تا تاریخ را وارد کنید" }]}
+              rules={[
+                { required: true, message: "لطفاً تا تاریخ را وارد کنید" },
+              ]}
             >
               <DatePicker className="!w-full" />
             </Form.Item>
@@ -518,8 +588,8 @@ const ReportsCardView: React.FC = () => {
               />
             )}
           </div>
-      </Form>
-        </div>
+        </Form>
+      </div>
 
       {isMobile ? (
         <div className="!space-y-4 !mt-6">
@@ -547,7 +617,9 @@ const ReportsCardView: React.FC = () => {
           ) : (
             !mobileLoading && (
               <Card className="!text-center !py-8 !bg-white dark:!bg-gray-900 dark:!bg-gray-900">
-                <div className="!text-gray-500 dark:!text-gray-400 dark:!text-gray-400">هیچ تراکنشی یافت نشد</div>
+                <div className="!text-gray-500 dark:!text-gray-400 dark:!text-gray-400">
+                  هیچ تراکنشی یافت نشد
+                </div>
               </Card>
             )
           )}
