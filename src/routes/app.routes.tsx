@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 import BusinessManagementRoutes from "./businessManagement.routes";
 import CardManagementRoutes from "./cardManagement.routes";
+import CustomerRoutes from "./customer.routes";
 import { UrlRoutes } from "./url.routes";
 import ReportsRoutes from "./reports.routes";
 
@@ -36,6 +37,10 @@ const AppRoute = () => {
             <Route
               path={`${UrlRoutes.cardManagement}/*`}
               element={<CardManagementRoutes />}
+            />
+            <Route
+              path={`${UrlRoutes.baseInfoManagement}/*`}
+              element={<CustomerRoutes />}
             />
             <Route
               path={`${UrlRoutes.reports}/*`}
