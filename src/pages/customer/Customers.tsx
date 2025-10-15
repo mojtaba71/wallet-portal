@@ -15,7 +15,7 @@ import type {
   GridReadyEvent,
   ICellRendererParams,
 } from "ag-grid-community";
-import { Button, Card, Form, Spin, Tag } from "antd";
+import { Button, Card, Form, Input, Spin, Tag } from "antd";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   MdEdit,
@@ -33,7 +33,11 @@ interface SearchCustomerForm {
   lastName?: string;
 }
 
-const CustomersView: React.FC = () => {
+interface CustomersViewProps {
+  onAddCustomer?: () => void;
+}
+
+const CustomersView: React.FC<CustomersViewProps> = ({ onAddCustomer }) => {
   const [form] = Form.useForm<SearchCustomerForm>();
   const [isMobile, setIsMobile] = useState(false);
 
@@ -401,7 +405,7 @@ const CustomersView: React.FC = () => {
               label={<span className="dark:!text-gray-50">کد مشخصه مشتری</span>}
               className="!mb-0"
             >
-              <InputNumber className="!w-full dir-ltr" placeholder="11141414" />
+              <InputNumber className="!w-full dir-ltr" />
             </Form.Item>
 
             <Form.Item
@@ -409,7 +413,7 @@ const CustomersView: React.FC = () => {
               label={<span className="dark:!text-gray-50">نام</span>}
               className="!mb-0"
             >
-              <InputNumber className="!w-full" />
+              <Input className="!w-full dir-rtl !bg-white dark:!bg-gray-800 !border-gray-300 dark:!border-gray-250 !text-gray-900 dark:!text-gray-100" />
             </Form.Item>
 
             <Form.Item
@@ -417,7 +421,7 @@ const CustomersView: React.FC = () => {
               label={<span className="dark:!text-gray-50">نام خانوادگی</span>}
               className="!mb-0"
             >
-              <InputNumber className="!w-full" />
+              <Input className="!w-full dir-rtl !bg-white dark:!bg-gray-800 !border-gray-300 dark:!border-gray-250 !text-gray-900 dark:!text-gray-100" />
             </Form.Item>
           </div>
 
@@ -426,6 +430,7 @@ const CustomersView: React.FC = () => {
               <Button
                 type="primary"
                 icon={<MdGroupAdd />}
+                onClick={onAddCustomer}
                 className="!bg-green-500 hover:!bg-green-600 !border-green-500 !text-white"
               >
                 مشتری جدید
@@ -440,7 +445,6 @@ const CustomersView: React.FC = () => {
                   disabled={!gridApi || isLoading}
                   tooltip="دانلود گزارش Excel"
                   className="!bg-green-100 hover:!bg-green-200 !border-green-100 !text-green-500"
-                  icon={<MdFileDownload />}
                 />
               )}
             </div>

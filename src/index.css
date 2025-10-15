@@ -67,12 +67,22 @@ h1 {
   text-align: right !important;
 }
 
-.ant-select-selector, .ant-picker{
+.ant-select .ant-select-selector {
+  border-color: #d1d5dc !important;
+}
+
+.ant-select .ant-select-arrow {
+  margin-top: -2px !important;
+}
+
+.ant-select-selector,
+.ant-picker {
   height: 40px !important;
 }
 .dark .ant-select .ant-select-selector {
-  border-color: #E5E4E7 !important;
+  border-color: #e5e4e7 !important;
 }
-.dark .ant-select .ant-select-arrow{
-  color: #E5E4E7
+.dark .ant-select .ant-select-arrow {
+  color: #e5e4e7;
+  margin-top: -2px !important;
 }

@@ -46,6 +46,8 @@ import type {
 import type {
   CustomerSearchRequest,
   CustomerSearchResponse,
+  CustomerRegistrationRequest,
+  CustomerRegistrationResponse,
 } from "@/models/customer.model";
 
 class Client {
@@ -170,6 +172,11 @@ class Client {
     searchCustomer: (input: CustomerSearchRequest) =>
       HttpClient.post<CustomerSearchResponse>(
         API_ENDPOINTS.SEARCH_CUSTOMER,
+        input
+      ),
+    registerCustomer: (input: CustomerRegistrationRequest) =>
+      HttpClient.post<CustomerRegistrationResponse>(
+        API_ENDPOINTS.REGISTER_CUSTOMER,
         input
       ),
   };

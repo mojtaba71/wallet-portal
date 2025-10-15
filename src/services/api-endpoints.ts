@@ -30,4 +30,5 @@ export const API_ENDPOINTS = {
   GET_DAILY_TRANSACTION_SUMMARY: "/dashboard/dailytransactionsummary",
 
   SEARCH_CUSTOMER: "/customer/searchperson",
+  REGISTER_CUSTOMER: "/customer/registerperson",
 };

@@ -1,4 +1,4 @@
-import type { CustomerSearchRequest } from "@/models/customer.model";
+import type { CustomerSearchRequest, CustomerRegistrationRequest } from "@/models/customer.model";
 import { useMutation } from "@tanstack/react-query";
 import client from "@/services/client.service";
 
@@ -8,4 +8,12 @@ export const useSearchCustomer = () => {
       client.customer.searchCustomer(input),
   });
   return { isLoading: isPending, mutate };
+};
+
+export const useRegisterCustomer = () => {
+  const { isPending, mutate, data } = useMutation({
+    mutationFn: (input: CustomerRegistrationRequest) =>
+      client.customer.registerCustomer(input),
+  });
+  return { isLoading: isPending, mutate, data };
 };
