@@ -2,6 +2,8 @@ export const UrlRoutes = {
   login: "/login",
   dashboard: "/dashboard",
   baseInfoManagement: "/base-info-management",
+  businessManagement: "/business-management",
+  cardManagement: "/card-management",
   customers: "/customers",
   groupCustomerRegistration: "/group-customer-registration",
   paymentMethod: "/payment-method",

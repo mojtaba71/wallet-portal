@@ -3,7 +3,6 @@ import ExportButton from "@/components/common/ExportButton";
 import InputNumber from "@/components/kits/number-input/NumberInput";
 import { ResultType } from "@/models/enum/enum";
 import {
-  type CustomerSearchRequest,
   type CustomerSearchResponse,
   PersonTypeLabels,
   GenderLabels,
@@ -23,7 +22,6 @@ import {
   MdPerson,
   MdMoreVert,
   MdGroupAdd,
-  MdFileDownload,
 } from "react-icons/md";
 import SimpleBar from "simplebar-react";
 
@@ -282,7 +280,7 @@ const CustomersView: React.FC<CustomersViewProps> = ({ onAddCustomer }) => {
       headerName: "عملیات",
       field: "actions",
       width: 100,
-      cellRenderer: (params: ICellRendererParams) => (
+      cellRenderer: (_params: ICellRendererParams) => (
         <div className="flex items-center justify-center">
           <Button
             type="text"
