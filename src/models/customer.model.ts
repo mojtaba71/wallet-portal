@@ -45,6 +45,36 @@ export const GenderLabels: Record<string, string> = {
   FEMALE: "زن",
 };
 
+export interface RegisterPersonRequest {
+  personType: "REAL" | "LEGAL" | "FOREIGN";
+  personId: number;
+  name: string;
+  lastName: string;
+  nameEN?: string;
+  lastNameEN?: string;
+  fatherName?: string;
+  fatherNameEN?: string;
+  gender?: "MALE" | "FEMALE";
+  mobile?: number;
+  email?: string;
+  birthDate?: string;
+  additionalData?: CustomerAdditionalData[];
+}
+
+export interface BulkCustomerData {
+  rowIndex: number;
+  personType: "REAL" | "LEGAL" | "FOREIGN";
+  personId: number;
+  name: string;
+  lastName: string;
+  fatherName?: string;
+  gender?: "MALE" | "FEMALE";
+  mobile?: number;
+  email?: string;
+  status: "idle" | "success" | "error";
+  errorMessage?: string;
+}
+
 export interface CustomerRegistrationRequest {
   personType: "REAL" | "LEGAL" | "FOREIGN";
   personId: number;

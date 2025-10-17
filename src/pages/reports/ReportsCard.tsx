@@ -324,7 +324,7 @@ const ReportsCardView: React.FC = () => {
   const renderMobileTransaction = (transaction: any, index: number) => (
     <Card
       key={index}
-      className="!mb-4 !shadow-lg hover:!shadow-xl !transition-all !duration-300 !border-0 !rounded-xl !overflow-hidden !bg-white dark:!bg-gray-900 dark:!bg-gray-800"
+      className="!mb-4 !shadow-lg hover:!shadow-xl !transition-all !duration-300 !border-0 !rounded-xl !overflow-hidden !bg-white dark:!bg-gray-800"
       styles={{ body: { padding: "16px" } }}
     >
       <div className="!flex !flex-col !gap-3">
@@ -594,8 +594,8 @@ const ReportsCardView: React.FC = () => {
       {isMobile ? (
         <div className="!space-y-4 !mt-6">
           {!hasSearched ? (
-            <Card className="!text-center !py-8 !bg-white dark:!bg-gray-900 dark:!bg-gray-900 !border-dashed !border-2 !border-gray-300 dark:!border-gray-250">
-              <div className="!text-gray-500 dark:!text-gray-400 dark:!text-gray-400 !text-lg !mb-2">
+            <Card className="!text-center !py-8 !bg-white dark:!bg-gray-900 !border-dashed !border-2 !border-gray-300 dark:!border-gray-250">
+              <div className="!text-gray-500 dark:!text-gray-400 !text-lg !mb-2">
                 📋 موردی برای نمایش وجود ندارد
               </div>
               <div className="!text-gray-400 !text-sm">
@@ -608,7 +608,7 @@ const ReportsCardView: React.FC = () => {
               {mobileHasMore && (
                 <div ref={mobileObserverRef} className="!text-center !py-4">
                   <Spin size="large" />
-                  <div className="!text-sm !text-gray-500 dark:!text-gray-400 dark:!text-gray-400 !mt-2">
+                  <div className="!text-sm !text-gray-500 dark:!text-gray-400!mt-2">
                     در حال دریافت اطلاعات...
                   </div>
                 </div>
@@ -616,8 +616,8 @@ const ReportsCardView: React.FC = () => {
             </SimpleBar>
           ) : (
             !mobileLoading && (
-              <Card className="!text-center !py-8 !bg-white dark:!bg-gray-900 dark:!bg-gray-900">
-                <div className="!text-gray-500 dark:!text-gray-400 dark:!text-gray-400">
+              <Card className="!text-center !py-8 !bg-white dark:!bg-gray-900 ">
+                <div className="!text-gray-500 dark:!text-gray-400 ">
                   هیچ تراکنشی یافت نشد
                 </div>
               </Card>

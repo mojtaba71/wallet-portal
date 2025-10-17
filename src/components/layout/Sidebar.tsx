@@ -48,12 +48,12 @@ const Sidebar = () => {
           label: "مشتریان",
           icon: <MdPerson />,
         },
+        {
+          to: `${UrlRoutes.baseInfoManagement}${UrlRoutes.groupCustomerRegistration}`,
+          label: "ثبت گروهی مشتریان",
+          icon: <MdGroup />,
+        },
       ],
-    },
-    {
-      to: UrlRoutes.groupCustomerRegistration,
-      label: "ثبت گروهی مشتریان",
-      icon: <MdGroup />,
     },
     {
       to: UrlRoutes.paymentMethod,

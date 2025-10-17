@@ -16,13 +16,7 @@ import type {
 } from "ag-grid-community";
 import { Button, Card, Form, Input, Spin, Tag } from "antd";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import {
-  MdEdit,
-  MdDelete,
-  MdPerson,
-  MdMoreVert,
-  MdGroupAdd,
-} from "react-icons/md";
+import { MdEdit, MdDelete, MdPerson, MdMoreVert, MdAdd } from "react-icons/md";
 import SimpleBar from "simplebar-react";
 
 interface SearchCustomerForm {
@@ -69,7 +63,7 @@ const CustomersView: React.FC<CustomersViewProps> = ({ onAddCustomer }) => {
 
       mutateSearchCustomer(
         {
-          offset,
+          offset: offset + 1,
           count: 10,
           personId: personId ? +personId : undefined,
           name,
@@ -138,7 +132,7 @@ const CustomersView: React.FC<CustomersViewProps> = ({ onAddCustomer }) => {
 
     mutateSearchCustomer(
       {
-        offset: 0,
+        offset: 1,
         count: 999,
         personId: personId ? +personId : undefined,
         name,
@@ -397,73 +391,73 @@ const CustomersView: React.FC<CustomersViewProps> = ({ onAddCustomer }) => {
     <div className="p-2 sm:p-3 md:p-4 h-full flex flex-col">
       <div className="!bg-white dark:!bg-gray-800 !rounded-lg !shadow-md !p-6 !border !border-gray-100 dark:!border-gray-400">
         <Form form={form} onFinish={onFinish} layout="vertical">
-          <div className="!grid !grid-cols-1 md:!grid-cols-3 !gap-4 !mb-6">
-            <Form.Item
-              name="personId"
-              label={<span className="dark:!text-gray-50">کد مشخصه مشتری</span>}
-              className="!mb-0"
-            >
-              <InputNumber className="!w-full dir-ltr" />
-            </Form.Item>
+          <div className="!flex !items-end !gap-4 !mb-7">
+            <div className="!flex-1 !grid !grid-cols-1 md:!grid-cols-3 !gap-4">
+              <Form.Item
+                name="personId"
+                label={
+                  <span className="dark:!text-gray-50">کد مشخصه مشتری</span>
+                }
+                className="!mb-0"
+              >
+                <InputNumber className="!w-full dir-ltr" />
+              </Form.Item>
 
-            <Form.Item
-              name="name"
-              label={<span className="dark:!text-gray-50">نام</span>}
-              className="!mb-0"
-            >
-              <Input className="!w-full dir-rtl !bg-white dark:!bg-gray-800 !border-gray-300 dark:!border-gray-250 !text-gray-900 dark:!text-gray-100" />
-            </Form.Item>
+              <Form.Item
+                name="name"
+                label={<span className="dark:!text-gray-50">نام</span>}
+                className="!mb-0"
+              >
+                <Input className="!w-full dir-rtl !bg-white dark:!bg-gray-800 !border-gray-300 dark:!border-gray-250 !text-gray-900 dark:!text-gray-100" />
+              </Form.Item>
 
-            <Form.Item
-              name="lastName"
-              label={<span className="dark:!text-gray-50">نام خانوادگی</span>}
-              className="!mb-0"
+              <Form.Item
+                name="lastName"
+                label={<span className="dark:!text-gray-50">نام خانوادگی</span>}
+                className="!mb-0"
+              >
+                <Input className="!w-full dir-rtl !bg-white dark:!bg-gray-800 !border-gray-300 dark:!border-gray-250 !text-gray-900 dark:!text-gray-100" />
+              </Form.Item>
+            </div>
+
+            <Button
+              type="primary"
+              icon={<MdAdd className="!text-xl mt-1" />}
+              onClick={onAddCustomer}
+              className="!bg-green-500 hover:!bg-green-600 !border-green-500 !text-white w-[180px]"
             >
-              <Input className="!w-full dir-rtl !bg-white dark:!bg-gray-800 !border-gray-300 dark:!border-gray-250 !text-gray-900 dark:!text-gray-100" />
-            </Form.Item>
+              مشتری جدید
+            </Button>
           </div>
 
-          <div className="!flex !gap-3 !justify-between">
-            <div className="!flex !gap-3">
-              <Button
-                type="primary"
-                icon={<MdGroupAdd />}
-                onClick={onAddCustomer}
-                className="!bg-green-500 hover:!bg-green-600 !border-green-500 !text-white"
-              >
-                مشتری جدید
-              </Button>
-              {!isMobile && (
-                <ExportButton
-                  gridApi={gridApi || undefined}
-                  fileName={`customers-${new Date()
-                    .toISOString()
-                    .slice(0, 19)
-                    .replace(/:/g, "-")}`}
-                  disabled={!gridApi || isLoading}
-                  tooltip="دانلود گزارش Excel"
-                  className="!bg-green-100 hover:!bg-green-200 !border-green-100 !text-green-500"
-                />
-              )}
-            </div>
-
-            <div className="!flex !gap-3">
-              <Button
-                type="default"
-                onClick={() => form.resetFields()}
-                className="!px-6 !bg-white dark:!bg-gray-800 !border-green-500 dark:!border-green-500 !text-green-500 dark:!text-green-500 hover:!bg-green-50 dark:hover:!bg-gray-700"
-              >
-                حذف فیلتر
-              </Button>
-              <Button
-                type="primary"
-                htmlType="submit"
-                loading={isLoading || mobileLoading}
-                className="!px-6 !bg-green-500 hover:!bg-green-600 !border-green-500"
-              >
-                جستجو
-              </Button>
-            </div>
+          <div className="!flex !gap-3 !justify-end">
+            <Button
+              type="default"
+              onClick={() => form.resetFields()}
+              className="!px-6 !bg-white dark:!bg-gray-800 !border-green-500 dark:!border-green-500 !text-green-500 dark:!text-green-500 hover:!bg-green-50 dark:hover:!bg-gray-700"
+            >
+              حذف فیلتر
+            </Button>
+            <Button
+              type="primary"
+              htmlType="submit"
+              loading={isLoading || mobileLoading}
+              className="!px-6 !bg-green-500 hover:!bg-green-600 !border-green-500"
+            >
+              جستجو
+            </Button>
+            {!isMobile && (
+              <ExportButton
+                gridApi={gridApi || undefined}
+                fileName={`customers-${new Date()
+                  .toISOString()
+                  .slice(0, 19)
+                  .replace(/:/g, "-")}`}
+                disabled={!gridApi || isLoading}
+                tooltip="دانلود گزارش Excel"
+                className="!bg-green-100 hover:!bg-green-200 !border-green-100 !text-green-500"
+              />
+            )}
           </div>
         </Form>
       </div>

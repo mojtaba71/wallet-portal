@@ -48,7 +48,7 @@ const ExportButton: React.FC<ExportButtonProps> = ({
   return (
     <Button
       type="primary"
-      icon={<MdFileDownload />}
+      icon={<MdFileDownload className="!text-xl mt-1" />}
       onClick={exportToExcel}
       disabled={disabled || !gridApi}
       loading={loading}
