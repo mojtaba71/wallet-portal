@@ -88,6 +88,7 @@ export interface CustomerRegistrationRequest {
   mobile?: number;
   email?: string;
   birthDate?: string;
+  registerDate?: string;
   additionalData?: CustomerAdditionalData[];
 }
 

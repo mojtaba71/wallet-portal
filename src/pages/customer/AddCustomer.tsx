@@ -1,5 +1,6 @@
 import InputNumber from "@/components/kits/number-input/NumberInput";
 import Select from "@/components/kits/select-box/SelectBox";
+import DatePicker from "@/components/kits/date-picker/DatePicker";
 import {
   type CustomerRegistrationRequest,
   personTypeOptions,
@@ -7,9 +8,11 @@ import {
 } from "@/models/customer.model";
 import { ResultType } from "@/models/enum/enum";
 import { useRegisterCustomer } from "@/services/hook/customerService.hook";
-import { Button, Form, Input, Typography, DatePicker } from "antd";
+import { Button, Form, Input, Typography } from "antd";
 import { useCallback } from "react";
 import { toast } from "react-toastify";
+import { MdDelete, MdAdd } from "react-icons/md";
+import { convertToJalaliString } from "@/utils/dateConfig";
 
 const { Title } = Typography;
 
@@ -27,7 +30,14 @@ const AddCustomer: React.FC<AddCustomerProps> = ({
 
   const onFinish = useCallback(
     (values: CustomerRegistrationRequest) => {
-      mutateRegisterCustomer(values, {
+      const payload = {
+        ...values,
+        personId: Number(values.personId),
+        birthDate: convertToJalaliString(values.birthDate),
+        registerDate: convertToJalaliString(new Date()),
+      };
+
+      mutateRegisterCustomer(payload, {
         onSuccess: (response) => {
           if (response.resultCode === ResultType.Success) {
             toast.success("اطلاعات مشتری با موفقیت ثبت شد");
@@ -127,29 +137,44 @@ const AddCustomer: React.FC<AddCustomerProps> = ({
           </Form.Item>
 
           <Form.Item
-            name="lastName"
-            label={<span className="dark:text-gray-50">نام خانوادگی</span>}
-            rules={[
-              { required: true, message: "نام خانوادگی الزامی است" },
-              {
-                validator: (_, value) => {
-                  const personType = form.getFieldValue("personType");
-                  if (
-                    (personType === "REAL" || personType === "FOREIGN") &&
-                    !value
-                  ) {
-                    return Promise.reject(
-                      new Error(
-                        "نام خانوادگی برای اشخاص حقیقی و اتباع خارجی الزامی است"
-                      )
-                    );
-                  }
-                  return Promise.resolve();
-                },
-              },
-            ]}
+            noStyle
+            shouldUpdate={(prev, curr) => prev.personType !== curr.personType}
           >
-            <Input className="dir-rtl !bg-white dark:!bg-gray-800 !border-gray-300 dark:!border-gray-250 !text-gray-900 dark:!text-gray-100" />
+            {({ getFieldValue }) => {
+              const personType = getFieldValue("personType");
+              if (personType === "REAL" || personType === "FOREIGN") {
+                return (
+                  <Form.Item
+                    name="lastName"
+                    label={
+                      <span className="dark:text-gray-50">نام خانوادگی</span>
+                    }
+                    rules={[
+                      {
+                        validator: (_, value) => {
+                          const personType = form.getFieldValue("personType");
+                          if (
+                            (personType === "REAL" ||
+                              personType === "FOREIGN") &&
+                            !value
+                          ) {
+                            return Promise.reject(
+                              new Error(
+                                "نام خانوادگی برای اشخاص حقیقی و اتباع خارجی الزامی است"
+                              )
+                            );
+                          }
+                          return Promise.resolve();
+                        },
+                      },
+                    ]}
+                  >
+                    <Input className="dir-rtl !bg-white dark:!bg-gray-800 !border-gray-300 dark:!border-gray-250 !text-gray-900 dark:!text-gray-100" />
+                  </Form.Item>
+                );
+              }
+              return null;
+            }}
           </Form.Item>
 
           <Form.Item
@@ -160,28 +185,71 @@ const AddCustomer: React.FC<AddCustomerProps> = ({
           </Form.Item>
 
           <Form.Item
-            name="lastNameEN"
-            label={
-              <span className="dark:text-gray-50">نام خانوادگی به انگلیسی</span>
-            }
+            noStyle
+            shouldUpdate={(prev, curr) => prev.personType !== curr.personType}
           >
-            <Input className="dir-ltr !bg-white dark:!bg-gray-800 !border-gray-300 dark:!border-gray-250 !text-gray-900 dark:!text-gray-100" />
+            {({ getFieldValue }) => {
+              const personType = getFieldValue("personType");
+              if (personType === "REAL" || personType === "FOREIGN") {
+                return (
+                  <Form.Item
+                    name="lastNameEN"
+                    label={
+                      <span className="dark:text-gray-50">
+                        نام خانوادگی به انگلیسی
+                      </span>
+                    }
+                  >
+                    <Input className="dir-ltr !bg-white dark:!bg-gray-800 !border-gray-300 dark:!border-gray-250 !text-gray-900 dark:!text-gray-100" />
+                  </Form.Item>
+                );
+              }
+              return null;
+            }}
           </Form.Item>
 
           <Form.Item
-            name="fatherName"
-            label={<span className="dark:text-gray-50">نام پدر</span>}
+            noStyle
+            shouldUpdate={(prev, curr) => prev.personType !== curr.personType}
           >
-            <Input className="dir-rtl !bg-white dark:!bg-gray-800 !border-gray-300 dark:!border-gray-250 !text-gray-900 dark:!text-gray-100" />
+            {({ getFieldValue }) => {
+              const personType = getFieldValue("personType");
+              if (personType === "REAL" || personType === "FOREIGN") {
+                return (
+                  <Form.Item
+                    name="fatherName"
+                    label={<span className="dark:text-gray-50">نام پدر</span>}
+                  >
+                    <Input className="dir-rtl !bg-white dark:!bg-gray-800 !border-gray-300 dark:!border-gray-250 !text-gray-900 dark:!text-gray-100" />
+                  </Form.Item>
+                );
+              }
+              return null;
+            }}
           </Form.Item>
 
           <Form.Item
-            name="fatherNameEN"
-            label={
-              <span className="dark:text-gray-50">نام پدر به انگلیسی</span>
-            }
+            noStyle
+            shouldUpdate={(prev, curr) => prev.personType !== curr.personType}
           >
-            <Input className="dir-ltr !bg-white dark:!bg-gray-800 !border-gray-300 dark:!border-gray-250 !text-gray-900 dark:!text-gray-100" />
+            {({ getFieldValue }) => {
+              const personType = getFieldValue("personType");
+              if (personType === "REAL" || personType === "FOREIGN") {
+                return (
+                  <Form.Item
+                    name="fatherNameEN"
+                    label={
+                      <span className="dark:text-gray-50">
+                        نام پدر به انگلیسی
+                      </span>
+                    }
+                  >
+                    <Input className="dir-ltr !bg-white dark:!bg-gray-800 !border-gray-300 dark:!border-gray-250 !text-gray-900 dark:!text-gray-100" />
+                  </Form.Item>
+                );
+              }
+              return null;
+            }}
           </Form.Item>
 
           <Form.Item
@@ -213,6 +281,7 @@ const AddCustomer: React.FC<AddCustomerProps> = ({
             <InputNumber
               className="!w-full dir-ltr !bg-white dark:!bg-gray-800 !border-gray-300 dark:!border-gray-250 !text-gray-900 dark:!text-gray-100"
               placeholder="989121234567"
+              maxLength={12}
             />
           </Form.Item>
 
@@ -221,8 +290,8 @@ const AddCustomer: React.FC<AddCustomerProps> = ({
             label={<span className="dark:text-gray-50">ایمیل</span>}
             rules={[
               {
-                type: "email",
-                message: "لطفاً ایمیل معتبر وارد کنید",
+                pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                message: "فرمت ایمیل صحیح نیست",
               },
             ]}
           >
@@ -233,8 +302,77 @@ const AddCustomer: React.FC<AddCustomerProps> = ({
             name="birthDate"
             label={<span className="dark:text-gray-50">تاریخ</span>}
           >
-            <DatePicker className="!w-full !bg-white dark:!bg-gray-800 !border-gray-300 dark:!border-gray-250" />
+            <DatePicker className="!w-full" />
           </Form.Item>
+        </div>
+
+        <div className="mt-6">
+          <div className="mb-4 flex items-center justify-between">
+            <Title
+              level={5}
+              className="!text-base !font-semibold !mb-0 !text-gray-600"
+            >
+              اطلاعات تکمیلی مشتری
+            </Title>
+            <Form.List name="additionalData">
+              {(_, { add }) => (
+                <Button
+                  type="primary"
+                  onClick={() => add()}
+                  icon={<MdAdd />}
+                  className="!bg-green-500 hover:!bg-green-600 !border-green-500 !text-white"
+                >
+                  افزودن اطلاعات تکمیلی
+                </Button>
+              )}
+            </Form.List>
+          </div>
+          <div className="border-b border-dashed border-blue-400 mb-4"></div>
+
+          <Form.List name="additionalData">
+            {(fields, { remove }) => (
+              <div className="grid grid-cols-2 gap-4">
+                {fields.map(({ key, name, ...restField }) => (
+                  <div
+                    key={key}
+                    className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700"
+                  >
+                    <div className="flex items-center gap-2">
+                      <Form.Item
+                        {...restField}
+                        name={[name, "tagKey"]}
+                        label={<span className="dark:text-gray-50">کلید</span>}
+                        rules={[{ required: true, message: "کلید الزامی است" }]}
+                        className="flex-1 mb-0"
+                      >
+                        <InputNumber className="!w-full dir-ltr !bg-white dark:!bg-gray-800 !border-gray-300 dark:!border-gray-250 !text-gray-900 dark:!text-gray-100" />
+                      </Form.Item>
+                      <Form.Item
+                        {...restField}
+                        name={[name, "tagValue"]}
+                        label={<span className="dark:text-gray-50">مقدار</span>}
+                        rules={[
+                          { required: true, message: "مقدار الزامی است" },
+                        ]}
+                        className="flex-1 mb-0"
+                      >
+                        <Input className="dir-rtl !bg-white dark:!bg-gray-800 !border-gray-300 dark:!border-gray-250 !text-gray-900 dark:!text-gray-100" />
+                      </Form.Item>
+                      <Button
+                        type="text"
+                        danger
+                        icon={<MdDelete />}
+                        onClick={() => remove(name)}
+                        className="!text-red-500 hover:!text-red-600"
+                      >
+                        حذف
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </Form.List>
         </div>
 
         <div className="flex justify-end gap-3 pt-6">
